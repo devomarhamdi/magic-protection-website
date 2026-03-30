@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
+
+@theme inline {
+  --color-outline-variant: #434653;
+  --color-inverse-surface: #e1e2ec;
+  --color-on-tertiary-container: #cccdd7;
+  --color-on-primary-fixed-variant: #00419c;
+  --color-on-surface-variant: #c3c6d5;
+  --color-secondary: #b4c7ed;
+  --color-on-primary: #002c6f;
+  --color-surface-container-low: #191b22;
+  --color-on-surface: #e1e2ec;
+  --color-error: #ffb4ab;
+  --color-on-error-container: #ffdad6;
+  --color-on-tertiary-fixed-variant: #44474e;
+  --color-surface-container-lowest: #0b0e15;
+  --color-inverse-primary: #1d59c1;
+  --color-secondary-fixed-dim: #b4c7ed;
+  --color-error-container: #93000a;
+  --color-surface-bright: #373941;
+  --color-surface-container: #1d1f26;
+  --color-tertiary-fixed: #e1e2ec;
+  --color-on-secondary-fixed: #061b39;
+  --color-on-tertiary-fixed: #191b22;
+  --color-primary-fixed-dim: #b0c6ff;
+  --color-on-background: #e1e2ec;
+  --color-tertiary-container: #55575f;
+  --color-surface-tint: #b0c6ff;
+  --color-inverse-on-surface: #2e3038;
+  --color-surface-container-highest: #32353c;
+  --color-background: #11131a;
+  --color-tertiary-fixed-dim: #c5c6cf;
+  --color-secondary-fixed: #d6e3ff;
+  --color-primary-container: #0f52ba;
+  --color-outline: #8d909e;
+  --color-on-secondary-container: #a6b9df;
+  --color-on-error: #690005;
+  --color-secondary-container: #374969;
+  --color-primary-fixed: #d9e2ff;
+  --color-on-primary-fixed: #001945;
+  --color-tertiary: #c5c6cf;
+  --color-primary: #b0c6ff;
+  --color-surface-variant: #32353c;
+  --color-on-secondary-fixed-variant: #354767;
+  --color-on-primary-container: #bcceff;
+  --color-on-secondary: #1e304f;
+  --color-on-tertiary: #2e3038;
+  --color-surface: #11131a;
+  --color-surface-dim: #11131a;
+  --color-surface-container-high: #272a31;
+  --font-headline: var(--font-headline), 'Plus Jakarta Sans', sans-serif;
+  --font-body: var(--font-body), 'Manrope', sans-serif;
+  --font-label: var(--font-body), 'Manrope', sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  overflow-x: hidden;
+}
+
+html,
+body {
+  max-width: 100%;
+}
+
+img,
+video {
+  max-width: 100%;
+}

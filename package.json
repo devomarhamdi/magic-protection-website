@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "magic-protection-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "embla-carousel-react": "^8.6.0",
     "next": "16.2.1",
+    "next-intl": "^4.8.3",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -20,6 +24,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

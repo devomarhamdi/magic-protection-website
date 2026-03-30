@@ -72,6 +72,7 @@
     rgba(176, 198, 255, 0.22) 62%,
     rgba(176, 198, 255, 0.04) 90%
   );
+  --hero-grid-line-color: rgba(176, 198, 255, 0.09);
   --hero-grid-dot-color: rgba(176, 198, 255, 0.24);
   --hero-spot-start: rgba(176, 198, 255, 0.32);
   --hero-spot-mid: rgba(176, 198, 255, 0.1);
@@ -148,6 +149,7 @@ html[data-theme='light'] {
     rgba(53, 110, 211, 0.18) 62%,
     rgba(31, 93, 197, 0.04) 90%
   );
+  --hero-grid-line-color: rgba(47, 90, 166, 0.11);
   --hero-grid-dot-color: rgba(47, 90, 166, 0.12);
   --hero-spot-start: rgba(51, 98, 181, 0.18);
   --hero-spot-mid: rgba(66, 114, 196, 0.06);

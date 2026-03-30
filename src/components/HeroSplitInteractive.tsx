@@ -65,12 +65,12 @@ export default function HeroSplitInteractive({ locale }: { locale: Locale }) {
         </div>
 
         <div
-          className="absolute inset-0 opacity-28 transition-[background-position] duration-300"
+          className="absolute inset-0 opacity-35 transition-[background-position] duration-300"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 1px 1px, var(--hero-grid-dot-color) 1px, transparent 0)',
-            backgroundSize: '34px 34px',
-            backgroundPosition: `${50 + shiftX}% ${50 + shiftY}%`,
+              'linear-gradient(0deg, var(--hero-grid-line-color) 1px, transparent 1px), linear-gradient(90deg, var(--hero-grid-line-color) 1px, transparent 1px), radial-gradient(circle at 1px 1px, var(--hero-grid-dot-color) 1px, transparent 0)',
+            backgroundSize: '46px 46px, 46px 46px, 23px 23px',
+            backgroundPosition: `${50 + shiftX * 0.7}% ${50 + shiftY * 0.7}%, ${50 + shiftX * 0.7}% ${50 + shiftY * 0.7}%, ${50 + shiftX}% ${50 + shiftY}%`,
           }}
         />
 

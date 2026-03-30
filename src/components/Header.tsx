@@ -2,7 +2,7 @@
 
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
@@ -11,10 +11,36 @@ export default function Header() {
   const t = useTranslations('Header');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    try {
+      const savedTheme = window.localStorage.getItem('theme');
+      document.documentElement.dataset.theme =
+        savedTheme === 'light' ? 'light' : 'dark';
+    } catch {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  }, []);
+
   const switchLanguage = () => {
     const nextLocale = currentLocale === 'ar' ? 'en' : 'ar';
     router.replace(pathname, { locale: nextLocale });
   };
+
+  const switchTheme = () => {
+    const currentTheme =
+      document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nextTheme;
+
+    try {
+      window.localStorage.setItem('theme', nextTheme);
+    } catch {
+      // Intentionally ignore write failures in privacy-restricted contexts.
+    }
+  };
+
+  const themeToggleLabel =
+    currentLocale === 'ar' ? 'تبديل المظهر' : 'Toggle theme';
 
   const links = [
     { name: t('Services'), href: '/services' },
@@ -26,7 +52,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5 shadow-[0_20px_50px_rgba(0,44,111,0.15)] flex justify-between items-center px-3 sm:px-4 md:px-8 py-3 md:py-4 max-w-none">
+      <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline/25 shadow-[0_20px_50px_rgba(0,44,111,0.15)] flex justify-between items-center px-3 sm:px-4 md:px-8 py-3 md:py-4 max-w-none">
         <Link
           href="/"
           className="text-xl md:text-2xl font-black tracking-tighter text-on-surface uppercase font-headline"
@@ -58,6 +84,26 @@ export default function Header() {
 
         {/* Right side items */}
         <div className="flex items-center gap-4">
+          <button
+            onClick={switchTheme}
+            aria-label={themeToggleLabel}
+            title={themeToggleLabel}
+            className="hidden md:flex bg-surface-container-high text-on-surface px-3 py-2 rounded-lg font-bold hover:scale-95 active:scale-100 transition-all duration-300 items-center justify-center border border-outline/25"
+          >
+            <span
+              className="material-symbols-outlined theme-icon-light"
+              data-icon="light_mode"
+            >
+              light_mode
+            </span>
+            <span
+              className="material-symbols-outlined theme-icon-dark"
+              data-icon="dark_mode"
+            >
+              dark_mode
+            </span>
+          </button>
+
           <button
             onClick={switchLanguage}
             className="hidden md:flex bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-bold hover:scale-95 active:scale-100 transition-all duration-300 electric-glow items-center justify-center gap-2"
@@ -100,7 +146,7 @@ export default function Header() {
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex justify-between items-center p-6 border-b border-white/5">
+        <div className="flex justify-between items-center p-6 border-b border-outline/20">
           <span className="text-lg font-headline font-black text-on-surface uppercase">
             {currentLocale === 'en' ? 'Menu' : 'القائمة'}
           </span>
@@ -137,7 +183,27 @@ export default function Header() {
           })}
         </div>
 
-        <div className="p-6 border-t border-white/5">
+        <div className="p-6 border-t border-outline/20">
+          <button
+            onClick={switchTheme}
+            aria-label={themeToggleLabel}
+            className="w-full mb-3 bg-surface-container-high text-on-surface px-4 py-3 rounded-lg font-bold active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 border border-outline/25"
+          >
+            <span
+              className="material-symbols-outlined theme-icon-light"
+              data-icon="light_mode"
+            >
+              light_mode
+            </span>
+            <span
+              className="material-symbols-outlined theme-icon-dark"
+              data-icon="dark_mode"
+            >
+              dark_mode
+            </span>
+            {themeToggleLabel}
+          </button>
+
           <button
             onClick={switchLanguage}
             className="w-full bg-primary-container text-on-primary-container px-4 py-3 rounded-lg font-bold active:scale-95 transition-all duration-300 electric-glow flex items-center justify-center gap-2"

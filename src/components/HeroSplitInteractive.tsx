@@ -35,7 +35,7 @@ export default function HeroSplitInteractive({ locale }: { locale: Locale }) {
 
   return (
     <section
-      className="relative min-h-svh w-full flex items-center justify-center overflow-hidden pt-20 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-24"
+      className="hero-shell relative min-h-svh w-full flex items-center justify-center overflow-hidden pt-20 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-24"
       onPointerMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * 100;
@@ -47,23 +47,20 @@ export default function HeroSplitInteractive({ locale }: { locale: Locale }) {
       }
     >
       <div className="absolute inset-0 z-0 bg-background">
-        <div className="absolute inset-0 bg-linear-to-b from-[#06080f] via-[#0b1220] to-[#070910]" />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'var(--hero-gradient-main)' }}
+        />
 
         <div className="absolute inset-0 overflow-hidden">
           <div
             className="absolute -left-1/4 -top-16 w-[160%] h-80 blur-3xl opacity-65 animate-[heroAuroraOne_16s_ease-in-out_infinite]"
-            style={{
-              background:
-                'linear-gradient(105deg, rgba(176,198,255,0.02) 8%, rgba(176,198,255,0.24) 35%, rgba(15,82,186,0.22) 58%, rgba(176,198,255,0.04) 85%)',
-            }}
+            style={{ background: 'var(--hero-aurora-one)' }}
           />
 
           <div
             className="absolute -right-1/3 -bottom-32 w-[165%] h-96 blur-3xl opacity-60 animate-[heroAuroraTwo_20s_ease-in-out_infinite]"
-            style={{
-              background:
-                'linear-gradient(80deg, rgba(176,198,255,0.02) 10%, rgba(15,82,186,0.2) 38%, rgba(176,198,255,0.22) 62%, rgba(176,198,255,0.04) 90%)',
-            }}
+            style={{ background: 'var(--hero-aurora-two)' }}
           />
         </div>
 
@@ -71,7 +68,7 @@ export default function HeroSplitInteractive({ locale }: { locale: Locale }) {
           className="absolute inset-0 opacity-28 transition-[background-position] duration-300"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 1px 1px, rgba(176,198,255,0.24) 1px, transparent 0)',
+              'radial-gradient(circle at 1px 1px, var(--hero-grid-dot-color) 1px, transparent 0)',
             backgroundSize: '34px 34px',
             backgroundPosition: `${50 + shiftX}% ${50 + shiftY}%`,
           }}
@@ -81,7 +78,7 @@ export default function HeroSplitInteractive({ locale }: { locale: Locale }) {
           className="absolute inset-0 pointer-events-none transition-opacity duration-300"
           style={{
             opacity: pointer.active ? 1 : 0.85,
-            background: `radial-gradient(560px circle at ${pointer.x}% ${pointer.y}%, rgba(176,198,255,0.32), rgba(176,198,255,0.1) 28%, transparent 70%)`,
+            background: `radial-gradient(560px circle at ${pointer.x}% ${pointer.y}%, var(--hero-spot-start), var(--hero-spot-mid) 28%, transparent 70%)`,
           }}
         />
 
@@ -89,7 +86,7 @@ export default function HeroSplitInteractive({ locale }: { locale: Locale }) {
           className="absolute left-1/2 top-1/2 w-125 h-125 rounded-full blur-[120px] opacity-55"
           style={{
             background:
-              'radial-gradient(circle, rgba(176,198,255,0.26) 0%, rgba(15,82,186,0.16) 52%, transparent 78%)',
+              'radial-gradient(circle, var(--hero-core-start) 0%, var(--hero-core-mid) 52%, transparent 78%)',
             transform: `translate3d(calc(-50% + ${shiftX * 2.2}px), calc(-50% + ${shiftY * 2.2}px), 0)`,
           }}
         />

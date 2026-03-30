@@ -36,6 +36,8 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      data-theme="dark"
+      suppressHydrationWarning
       className={`${alexandria.variable} ${cairo.variable} antialiased`}
     >
       <head>
